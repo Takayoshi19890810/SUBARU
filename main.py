@@ -4,6 +4,7 @@ import time
 import re
 import random
 import requests
+import unicodedata
 from datetime import datetime, timedelta
 from email.utils import parsedate_to_datetime
 
@@ -64,6 +65,13 @@ def get_last_modified_datetime(url):
     except:
         pass
     return "取得不可"
+
+def is_japanese(text):
+    return any(
+        'CJK UNIFIED' in unicodedata.name(ch, '') or
+        'HIRAGANA' in unicodedata.name(ch, '') or
+        'KATAKANA' in unicodedata.name(ch, '') for ch in text
+    )
 
 def get_google_news_with_selenium(keyword: str):
     options = Options()
@@ -164,7 +172,7 @@ def get_msn_news_with_selenium(keyword: str):
             if pub_date == "取得不可" and url:
                 pub_date = get_last_modified_datetime(url)
 
-            if title and url:
+            if title and url and is_japanese(title):  # ✅ 日本語のみ
                 data.append({"タイトル": title, "URL": url, "投稿日": pub_date, "引用元": source or "MSN"})
         except:
             continue
