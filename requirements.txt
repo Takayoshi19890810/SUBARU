@@ -1,5 +1,7 @@
-gspread
-selenium
-webdriver_manager
-requests
 beautifulsoup4
+selenium
+webdriver-manager
+gspread
+oauth2client
+requests
+openpyxl
