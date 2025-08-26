@@ -20,8 +20,8 @@ import gspread
 # =========================
 # 既定（引数/環境変数で上書き可）
 # =========================
-DEFAULT_KEYWORD = "ホンダ"
-DEFAULT_SPREADSHEET_ID = "1AwwMGKMHfduwPkrtsik40lkO1z1T8IU_yd41ku-yPi8"
+DEFAULT_KEYWORD = "スバル"
+DEFAULT_SPREADSHEET_ID = "1OZNrRF_3CvbVTo-cdq2rxKBxuBNY4ZkAxiHosiMacg4"
 
 # =========================
 # 共通ユーティリティ
@@ -431,7 +431,7 @@ def write_to_spreadsheet(articles: list[dict], spreadsheet_id: str, worksheet_na
 # =========================
 def resolve_config() -> tuple[str, str]:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--keyword", type=str, default=None, help="検索キーワード（例: ホンダ）")
+    parser.add_argument("--keyword", type=str, default=None, help="検索キーワード（例: スバル）")
     parser.add_argument("--sheet", type=str, default=None, help="スプレッドシートID")
     args = parser.parse_args()
 
